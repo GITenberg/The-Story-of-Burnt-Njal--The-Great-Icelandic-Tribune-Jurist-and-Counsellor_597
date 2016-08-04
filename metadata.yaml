@@ -1,0 +1,26 @@
+_repo: The-Story-of-Burnt-Njal--The-Great-Icelandic-Tribune-Jurist-and-Counsellor_597
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Unknown
+    gutenberg_agent_id: '49'
+    url: http://www.gutenberg.org/2009/agents/49
+    wikipedia: http://www.gutenberg.org/browse/authors/a#a216
+description: Unknown Icelandic authors, 13th century
+gutenberg_bookshelf:
+- Biographies
+- Best Books Ever Listings
+gutenberg_issued: '2004-11-11'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '597'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Njáll Thorgursson, approximately 930-1011'
+- !lcc 'PT'
+- GITenberg
+title: 'The Story of Burnt Njal: The Great Icelandic Tribune, Jurist, and Counsellor'
+url: http://www.gutenberg.org/ebooks/597
