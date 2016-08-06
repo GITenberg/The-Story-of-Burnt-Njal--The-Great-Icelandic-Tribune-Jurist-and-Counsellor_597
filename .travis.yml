@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: QszTU45EGoAqJlMVnbwWXiaF/4G8gohC3gZQK+9TlRJYwbfVr/OfQilcXYsTt8TMadjaEcs/qIba4b1zzBUFA2CfXFmHtqHuFuBzCMoEKGB85ynCzlBa96efc/Ug90SUgOdQVBPOBdcKm79oIpO/GSckL5UdQfgyCYrjxDHh3BsBIsoYzNAPacCg8JiDQzt7pExmHjSz2MlHIfIiZhyDLmnjIBxqKS1dBjd+p24dJrXev6IwsKhQO56Oz/bVv9W0aH5iOMrU9UkPSJk/tBl9fa8uFyCNXF+kLcPd0mo58ypZr808hVkh2OyyxvdOf7iTTnNZlS/6wMR3dnOFjDE+uc1H8296P0+Gqru9PcOQUy3Mvl+3cZkzREpThR0DnFh8LL6XTa/vZO3F/Cc47D98QNjAWAoiLA8kdFCblNqkRTBnIkIdF4TOvaqwqElOeUUx45YiFLqUW8JM3J1/S7oDuTeBuO90RRgzzRs7Uwcwlnk33sPpdJDBgSixwhGnzqoO79zOdoCTqJGTBMAosdrsXZZhP3cWxikNtYdiwvShwPZtbOkbQAn7OXiHbMgfHLEnrvG32dGurW7z+zP0LuIi+dyi6D/Ibk2N96MvPEML9N97g4UFO8DV1bHn7b3XimHUm1E96+iZsLBHyq2ciD9wNllnefiEIkNLz/lANovFsJU=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Story-of-Burnt-Njal--The-Great-Icelandic-Tribune-Jurist-and-Counsellor_597
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
