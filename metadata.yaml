@@ -1,5 +1,8 @@
 _repo: The-Story-of-Burnt-Njal--The-Great-Icelandic-Tribune-Jurist-and-Counsellor_597
-_version: 0.1.0
+_version: 0.2.0
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   author:
     agent_name: Unknown
@@ -7,6 +10,8 @@ creator:
     url: http://www.gutenberg.org/2009/agents/49
     wikipedia: http://www.gutenberg.org/browse/authors/a#a216
 description: Unknown Icelandic authors, 13th century
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/597#The-Story-of-Burnt-Njal--The-Great-Icelandic-Tribune-Jurist-and-Counsellor
 gutenberg_bookshelf:
 - Biographies
 - Best Books Ever Listings
